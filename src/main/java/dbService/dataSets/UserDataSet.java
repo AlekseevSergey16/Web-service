@@ -25,7 +25,6 @@ public class UserDataSet {
     public UserDataSet(String login) {
         this.login = login;
         this.password = login;
-
     }
 
     public String getLogin() {

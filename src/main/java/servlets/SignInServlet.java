@@ -16,7 +16,7 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException  {
+    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
@@ -26,7 +26,7 @@ public class SignInServlet extends HttpServlet {
             return;
         }
 
-        UserDataSet profile = accountService.getUserByLogin(login);
+        UserDataSet profile = accountService.getUser(login, password);
         if (profile == null || !profile.getPassword().equals(password)) {
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().println("Unauthorized");

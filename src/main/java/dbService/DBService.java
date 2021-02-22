@@ -10,8 +10,9 @@ import java.sql.SQLException;
 public class DBService {
     private final Connection connection;
 
-    public DBService(Connection connection) {
+    public DBService() {
         this.connection = getSQLiteConnection();
+        printConnectInfo();
     }
 
     public UserDataSet getUser(String login, String password) throws DBException {
@@ -51,5 +52,16 @@ public class DBService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void printConnectInfo() {
+        try {
+            System.out.println("DB name: " + connection.getMetaData().getDatabaseProductName());
+            System.out.println("DB version: " + connection.getMetaData().getDatabaseProductVersion());
+            System.out.println("Driver: " + connection.getMetaData().getDriverName());
+            System.out.println("Autocommit: " + connection.getAutoCommit());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

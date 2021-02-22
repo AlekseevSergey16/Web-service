@@ -18,7 +18,7 @@ public class UsersDAO {
     }
 
     public UserDataSet get(String login, String password) throws SQLException {
-        return executor.execQuery("select * from users where login=" + login + "'", (result) -> {
+        return executor.execQuery("select * from users where login='" + login + "'", (result) -> {
             result.next();
             return new UserDataSet(result.getLong(1), result.getString(2), result.getString(3));
         });

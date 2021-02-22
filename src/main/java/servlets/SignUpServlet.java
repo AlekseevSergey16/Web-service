@@ -26,7 +26,7 @@ public class SignUpServlet extends HttpServlet {
             return;
         }
 
-        UserDataSet profile = accountService.getUserByLogin(login);
+        UserDataSet profile = accountService.getUser(login, password);
         if (profile != null) {
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().println("Пользователь уже зарегистрирован");
