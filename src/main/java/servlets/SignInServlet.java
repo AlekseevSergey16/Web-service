@@ -1,7 +1,7 @@
 package servlets;
 
 import accounts.AccountService;
-import accounts.UserProfile;
+import dbService.dataSets.UserDataSet;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class SignInServlet extends HttpServlet {
             return;
         }
 
-        UserProfile profile = accountService.getUserByLogin(login);
+        UserDataSet profile = accountService.getUserByLogin(login);
         if (profile == null || !profile.getPassword().equals(password)) {
             response.setContentType("text/html;charset=utf-8");
             response.getWriter().println("Unauthorized");
